@@ -10,13 +10,8 @@ export class AuthController{
     constructor(private authService : AuthService){}
 
     @Post("signup")
-    signup(@Body("email") email: string, @Body("password") password: string){   //dto - data transfer object...@Body gets body of the post request
-        console.log({
-            email,
-            password,
-        });
-    
-       return this.authService.signup();
+    signup(@Body() dto: AuthDTO){   //dto - data transfer object...@Body gets body of the post request..
+       return this.authService.signup(dto);
     }
 
     @Post("signin")
